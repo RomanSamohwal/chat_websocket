@@ -1,26 +1,25 @@
 import React, {useEffect, useRef, useState} from 'react';
-import io from 'socket.io-client'
+import {useDispatch, useSelector} from 'react-redux';
+import {AppStateType} from './store';
+import {createConnection, destroyConnection, sendMessage, setClientName, typingMessage} from './chat-reducer';
 
-let my = 'https://chat-websocket-backend.herokuapp.com';
-let dimon = 'https://samurai-chat-back.herokuapp.com'
-let localhost = 'http://localhost:3009'
-const socket = io(localhost);
 
 function App() {
 
+    const messages = useSelector((state: AppStateType) => state.chat.messages)
+    const typingUsers = useSelector((state: AppStateType) => state.chat.typingUsers)
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        //мы подписывемся на события 'client-message-sent' с бэка
-        socket.on('init-messages-published', (messages: any) => {
-            setMessages(messages)
-        });
-        socket.on('new-message-sent', (message: any) => {
-            setMessages((messages) => [...messages, message])
-        })
+        dispatch(createConnection())
+        return () => {
+            dispatch(destroyConnection())
+        }
     }, []);
 
 
-    const [messages, setMessages] = useState<Array<any>>([]);
+   // const [messages, setMessages] = useState<Array<any>>([]);
     const [message, setMessage] = useState('');
     const [name, setName] = useState('Roman');
     const [isAutoScrollActive, setIsAutoScrollActive] = useState(true);
@@ -44,35 +43,47 @@ function App() {
                     width: '300px',
                     overflowY: 'scroll'
                 }} onScroll={(e) => {
-                    if (e.currentTarget.scrollTop > lastScrollTop) {
+                    let element = e.currentTarget;
+                    let maxScrollPosition = element.scrollHeight - element.clientHeight;
+                    let module = Math.abs(maxScrollPosition - element.scrollTop) < 10
+
+                    if (e.currentTarget.scrollTop > lastScrollTop && module ) {
                         setIsAutoScrollActive(true);
                     } else {
                         setIsAutoScrollActive(false)
                     }
                     setLastScrollTop(e.currentTarget.scrollTop)
                 }}>
-                    {messages.map(m => {
+                    {messages.map((m:any) => {
                         return <div key={m.id}>
                             <b>{m.user.name}</b> : {m.message}
                             <hr/>
+                        </div>
+                    })}
+                    {typingUsers.map((m: any) => {
+                        return <div key={m.id}>
+                            <b>{m.name} : </b> ...typing message
                         </div>
                     })}
                     <div ref = {messagesAnchorRef}> </div>
                 </div>
                 <input value={name} onChange={(e) => setName(e.currentTarget.value)}/>
                 <button onClick={() => {
-                    // канал по которому придет сообщение на бэк , событие 'client-message-sent'
-                    socket.emit('client-name-sent', name);
+                   dispatch(setClientName(name))
                 }}
                 >send name
                 </button>
                 <div>
                         <textarea value={message}
-                                  onChange={(e) => setMessage(e.currentTarget.value)}>
-                </textarea>
+                                  onChange={(e) => setMessage(e.currentTarget.value)}
+                                  onKeyPress={()=>{
+                                      dispatch(typingMessage())
+                                  }} >
+
+                        </textarea>
                     <button onClick={() => {
                         // канал по которому придет сообщение на бэк , событие 'client-message-sent'
-                        socket.emit('client-message-sent', message);
+                        dispatch(sendMessage(message))
                         setMessage('');
                     }}>Send Message
                     </button>

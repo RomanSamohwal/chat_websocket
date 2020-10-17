@@ -2,19 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac2bb23f-d4f4-4efd-a42e-4774211862c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chat-reducer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -23,7 +31,6 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -37,6 +44,7 @@
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="ts.external.directory.path" value="D:\finish project\chat_websocket\node_modules\typescript\lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -58,6 +66,7 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -73,38 +82,69 @@
       <workItem from="1602617384011" duration="2019000" />
       <workItem from="1602703106010" duration="783000" />
       <workItem from="1602791967852" duration="1359000" />
-      <workItem from="1602841101938" duration="4757000" />
+      <workItem from="1602841101938" duration="7816000" />
+      <workItem from="1602874030526" duration="112000" />
+      <workItem from="1602874773460" duration="13703000" />
+      <workItem from="1602934072815" duration="2672000" />
     </task>
+    <task id="LOCAL-00001" summary="add scrolling">
+      <created>1602870687236</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1602870687236</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add scrolling" />
+    <option name="LAST_COMMIT_MESSAGE" value="add scrolling" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1259" height="163" key="GridCell.Tab.0.bottom" timestamp="1602796450226">
+    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1602870685717">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1602796450226" />
+    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1602870685717" />
+    <state width="1259" height="163" key="GridCell.Tab.0.bottom" timestamp="1602935877937">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1602935877937" />
     <state width="1259" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1602470050496" />
-    <state width="1259" height="163" key="GridCell.Tab.0.center" timestamp="1602796450226">
+    <state width="1259" height="163" key="GridCell.Tab.0.center" timestamp="1602935877937">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="163" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1602796450226" />
+    <state width="1259" height="163" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1602935877937" />
     <state width="1259" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1602470050496" />
-    <state width="1259" height="163" key="GridCell.Tab.0.left" timestamp="1602796450226">
+    <state width="1259" height="163" key="GridCell.Tab.0.left" timestamp="1602935877936">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="163" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1602796450226" />
+    <state width="1259" height="163" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1602935877936" />
     <state width="1259" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1602470050496" />
-    <state width="1259" height="163" key="GridCell.Tab.0.right" timestamp="1602796450226">
+    <state width="1259" height="163" key="GridCell.Tab.0.right" timestamp="1602935877937">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="163" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1602796450226" />
+    <state width="1259" height="163" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1602935877937" />
     <state width="1259" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1602470050496" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1602870668221">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1602870769370">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1602870668221" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1602870769370" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1602464282932">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
