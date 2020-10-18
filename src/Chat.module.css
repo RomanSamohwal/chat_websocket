@@ -1,0 +1,13 @@
+.Chat{
+    padding: 10px;
+    height: 400px;
+    width: 100%;
+    overflow-y: scroll;
+    background-color: #f3faff
+}
+
+.Message{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

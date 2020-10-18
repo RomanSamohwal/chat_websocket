@@ -26,7 +26,9 @@ export const api = {
     },
     sendMessage(message: string) {
         // канал по которому придет сообщение на бэк , событие 'client-message-sent'
-        this.socket?.emit('client-message-sent', message);
+        this.socket?.emit('client-message-sent', message, (error: string | null) => {
+            if(error) alert(error)
+        });
     },
     typingMessage() {
         this.socket?.emit('client-typing');
