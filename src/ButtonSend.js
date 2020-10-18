@@ -15,6 +15,7 @@ export default function IconLabelButtons(props) {
     return (
         <div>
             <Button
+                disabled={props.disabled}
                 variant="contained"
                 color="primary"
                 className={classes.button}

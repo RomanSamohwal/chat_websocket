@@ -4,4 +4,8 @@
     justify-content: center;
     width: 100%;
     min-height: 100vh;
+    background-color: #07070f;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }

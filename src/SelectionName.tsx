@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {setClientName} from './chat-reducer';
 import {useDispatch} from 'react-redux';
-import {Button, Input, TextField} from '@material-ui/core';
+import {Button, TextField} from '@material-ui/core';
 
 export const SelectionName = () => {
     const dispatch = useDispatch();

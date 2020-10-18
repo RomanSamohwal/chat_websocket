@@ -3,7 +3,9 @@
     height: 400px;
     width: 100%;
     overflow-y: scroll;
-    background-color: #f3faff
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .Message{

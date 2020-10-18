@@ -6,7 +6,7 @@ const Messages = (props) => {
         <div className={s.cloud}>
             <div className={s.cloud}>
                 <div className={s.name}>{props.name}</div>
-                {props.text}
+                {props.text}{props.children}
             </div>
         </div>
     </div>

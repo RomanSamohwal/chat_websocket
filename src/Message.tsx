@@ -7,8 +7,14 @@ import style from './Chat.module.css'
 import IconLabelButtons from './ButtonSend';
 import TextField from '@material-ui/core/TextField';
 import BorderColorIcon from '@material-ui/icons/BorderColor';
+import imageBack from './assests/chat.jpg'
 
 export const Message = () => {
+    const chatBackground = {
+        backgroundImage: `url(${imageBack})`,
+    }
+
+    const [error, setError] = useState<string | null>(null)
     const messages = useSelector((state: AppStateType) => state.chat.messages)
     const typingUsers = useSelector((state: AppStateType) => state.chat.typingUsers)
     const [isAutoScrollActive, setIsAutoScrollActive] = useState(true);
@@ -30,8 +36,27 @@ export const Message = () => {
         }
     }, [messages])
 
+    const addItemHandler = () => {
+        if (message.trim() !== '') {
+            dispatch(sendMessage(message))
+            setMessage("");
+        } else {
+            setError('required to enter a message')
+        }
+    }
+
+    const onKeyPressHandler = (e: any) => {
+        dispatch(typingMessage())
+        if (error !== null) {
+            setError(null);
+        }
+        if (e.charCode === 13) {
+            addItemHandler();
+        }
+    }
+
     return <div>
-        <div className={style.Chat} onScroll={(e) => {
+        <div style={chatBackground} className={style.Chat} onScroll={(e) => {
             let element = e.currentTarget;
             let maxScrollPosition = element.scrollHeight - element.clientHeight;
             let module = Math.abs(maxScrollPosition - element.scrollTop) < 10
@@ -47,9 +72,10 @@ export const Message = () => {
                 return <Messages key={m.id} text={m.message} name={m.user.name}/>
             })}
             {typingUsers.map((m: any) => {
-                return <div key={m.id} className={style.Chat}>
+                return <div key={m.id}>
                      <div>
-                         <b>{m.name} : </b> .........<BorderColorIcon/>
+                         <Messages key={m.id} text={'......'} name={m.name}><BorderColorIcon/></Messages>
+                         {/*<b>{m.name} : </b> .........<BorderColorIcon/>*/}
                      </div>
                 </div>
             })}
@@ -57,18 +83,17 @@ export const Message = () => {
         </div>
         <div className={style.Message}>
             <div>
-                <TextField value={message}
+                <TextField style={{borderColor: 'white'}}
+                           value={message}
+                           variant='outlined'
+                           error={!!error}
+                           inputMode={'text'}
+                           label='enter your message'
                            onChange={(e) => setMessage(e.currentTarget.value)}
-                           onKeyPress={() => {
-                               dispatch(typingMessage())
-                           }}>
+                           helperText={error}
+                           onKeyPress={onKeyPressHandler}>
                 </TextField>
-                <IconLabelButtons sendMessage={() => {
-                    // канал по которому придет сообщение на бэк , событие 'client-message-sent'
-                    dispatch(sendMessage(message))
-                    setMessage('');
-                }}>Send Message
-                </IconLabelButtons>
+                <IconLabelButtons sendMessage={addItemHandler}>Send Message</IconLabelButtons>
             </div>
         </div>
     </div>
