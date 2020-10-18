@@ -7,7 +7,7 @@ let localhost = 'http://localhost:3009'
 export const api = {
     socket: null as null | SocketIOClient.Socket,
     createConnection() {
-        this.socket = io(localhost);
+        this.socket = io(my);
     },
     subscribe(initMessagesHandler: (messages: any) => void,
               newMessageHandler: (message: any) => void,
