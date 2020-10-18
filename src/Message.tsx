@@ -6,6 +6,7 @@ import Messages from './Messages';
 import style from './Chat.module.css'
 import IconLabelButtons from './ButtonSend';
 import TextField from '@material-ui/core/TextField';
+import BorderColorIcon from '@material-ui/icons/BorderColor';
 
 export const Message = () => {
     const messages = useSelector((state: AppStateType) => state.chat.messages)
@@ -46,11 +47,11 @@ export const Message = () => {
                 return <Messages key={m.id} text={m.message} name={m.user.name}/>
             })}
             {typingUsers.map((m: any) => {
-                return <Messages key={m.id} text={'...typing message'} name={m.name}/>
-
-                /*<div key={m.id}>
-                    <b>{m.name} : </b> ...typing message
-                </div>*/
+                return <div key={m.id} className={style.Chat}>
+                     <div>
+                         <b>{m.name} : </b> .........<BorderColorIcon/>
+                     </div>
+                </div>
             })}
             <div ref={messagesAnchorRef}></div>
         </div>
@@ -72,3 +73,5 @@ export const Message = () => {
         </div>
     </div>
 }
+
+/*<Messages key={m.id} text={'...typing message'} name={m.name}/>*/
