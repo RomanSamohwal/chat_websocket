@@ -9,12 +9,11 @@ function App() {
     const background = {
         backgroundImage: `url(${imageBack})`,
     }
-
     return (
         <div style={background} className={style.App}>
-            <div>
-                <SelectionName/>
-                <Message/>
+            <div className={style.Message}>
+               <div><SelectionName/></div>
+               <div><Message/></div>
             </div>
         </div>
     );

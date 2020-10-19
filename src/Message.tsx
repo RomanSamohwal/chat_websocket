@@ -82,7 +82,7 @@ export const Message = () => {
             <div ref={messagesAnchorRef}></div>
         </div>
         <div className={style.Message}>
-            <div>
+            <div style={{display:'flex', flexDirection: 'column' , alignItems: 'center', justifyContent: 'center'}}>
                 <TextField style={{borderColor: 'white'}}
                            value={message}
                            variant='outlined'

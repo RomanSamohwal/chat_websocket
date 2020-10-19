@@ -20,14 +20,19 @@ export const api = {
         this.socket?.disconnect()
         this.socket = null;
     },
-    sendName(name: string) {
+    sendName(name: string, fn:  (name: any) => void) {
         // канал по которому придет сообщение на бэк , событие 'client-message-sent'
-        this.socket?.emit('client-name-sent', name)
+        this.socket?.emit('client-name-sent', name, (nameBack: string | null) => {
+            console.log(nameBack)
+            fn(nameBack)
+        })
     },
     sendMessage(message: string) {
         // канал по которому придет сообщение на бэк , событие 'client-message-sent'
         this.socket?.emit('client-message-sent', message, (error: string | null) => {
-            if(error) alert(error)
+            if (error) {
+                console.log(error)
+            }
         });
     },
     typingMessage() {

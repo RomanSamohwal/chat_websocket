@@ -1,12 +1,17 @@
 import {api} from './api';
 
 const initialState = {
+    name: '' as string,
     messages: [] as any,
     typingUsers:  [] as any
 }
 
 export const chatReducer = (state: initialStateType = initialState, action: any) => {
     switch (action.type) {
+        case 'sentCurrentName': {
+            return {...state, name: action.name}
+        }
+
         case 'messages-received': {
             return {...state, messages: action.messages}
         }
@@ -28,7 +33,7 @@ export const chatReducer = (state: initialStateType = initialState, action: any)
 const messageReceived = (messages: any) => ({type: 'messages-received', messages} )
 const newMessageReceived = (message: any) => ({type: 'new-messages-received', message} )
 const typingUserAdded = (user: any) => ({type: 'typingUserAdded', user} )
-
+const sentCurrentName = (name: string) =>({type: 'sentCurrentName', name})
 
 export const createConnection = () => (dispatch: any) => {
     api.createConnection()
@@ -43,7 +48,10 @@ export const createConnection = () => (dispatch: any) => {
 }
 
 export const setClientName = (name: string) => (dispatch: any) => {
-    api.sendName(name)
+    let fn = (nameBack: any) => {
+        dispatch(sentCurrentName(nameBack))
+    }
+    api.sendName(name, fn)
 }
 
 export const sendMessage = (message: string) => (dispatch: any) => {
